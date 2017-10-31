@@ -121,7 +121,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
-app.put('/api/stations', airboxController.putStation);
+app.put('api/stations', airboxController.putStation);
 
 /**
  * Primary app routes.
