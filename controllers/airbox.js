@@ -1,20 +1,17 @@
-const Station = require('../models/Station');
+const Reading = require('../models/Reading');
 
-exports.putStation = (req, res) => {
-  const { station, data: { temperature, humidity, pollution } } = req.body;
-  const query = { _id: station };
-  const newStation = {
-    $set: {
-      temperature: { unit: temperature.unit, value: temperature.value },
-      humidity,
-      pollution,
-      // raw: raw,
-    },
-  };
-  const options = { upsert: true, new: true };
+exports.postStation = (req, res) => {
+  const { station, temperature, humidity, pollution } = req.body;
+  const reading = new Reading({
+    station,
+    temperature: { unit: temperature.unit, value: temperature.value },
+    humidity,
+    pollution
+  });
 
-  Station.findByIdAndUpdate(query, newStation, options, (error, station) => {
+  reading.save((error) => {
     if (error) return res.send(500, { error });
-    res.json({ station });
+
+    res.json(reading);
   });
 };

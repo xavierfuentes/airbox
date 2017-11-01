@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
 
-const stationSchema = new mongoose.Schema(
+const readingSchema = new mongoose.Schema(
   {
+    station: String,
     temperature: {
       unit: String,
       value: Number,
     },
-    humidity: Number,
+    humidity: { type: Number, min: 0, max: 100 },
     pollution: Number,
     // raw: mongoose.Schema.Types.Mixed,
   },
   { timestamps: true },
 );
 
-const station = mongoose.model('station', stationSchema);
+const reading = mongoose.model('reading', readingSchema);
 
-module.exports = station;
+module.exports = reading;
