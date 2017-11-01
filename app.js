@@ -119,7 +119,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   }
 //   next();
 // });
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+// app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
 app.put('/api/stations', airboxController.putStation);
 
@@ -238,7 +238,7 @@ app.listen(app.get('port'), () => {
     '%s App is running at http://localhost:%d in %s mode',
     chalk.green('✓'),
     app.get('port'),
-    app.get('env'),
+    app.get('env')
   );
   console.log('  Press CTRL-C to stop\n');
 });

@@ -14,6 +14,9 @@
     "postinstall": "npm rebuild node-sass",
     "eslint": "eslint **/*.js"
   },
+  "engines": {
+    "node": "8.8.0"
+  },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.0",
